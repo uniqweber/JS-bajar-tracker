@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply w-full h-10 px-3 border border-gray-300 rounded-md text-sm;
+  }
+  .btn {
+    @apply text-white w-full bg-green-600 text-sm h-10 border rounded-md;
+  }
+}
