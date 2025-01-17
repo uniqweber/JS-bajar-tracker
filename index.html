@@ -3,48 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Baloo+Da+2:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/output.css" />
+
     <title>বাজেট ট্র্যাকার</title>
   </head>
-  <body>
+  <body class="font-alkatra">
     <main>
-      <section class="min-h-screen bg-gray-200 p-10">
+      <section
+        class="min-h-screen flex items-center justify-center bg-gray-200 p-5 md:p-10"
+      >
         <div
-          class="grid grid-cols-3 bg-white p-10 gap-5 max-w-screen-lg mx-auto rounded-md shadow text-gray-800"
+          class="grid lg:grid-cols-3 bg-white p-5 md:p-10 gap-5 max-w-screen-lg mx-auto rounded-md shadow text-gray-800"
         >
-          <div class="col-span-2 border-r border-green-600 pr-5">
-            <h1 class="text-4xl"><span>November</span> Bajarer Talika</h1>
+          <div class="lg:col-span-2 lg:border-r border-gray-300 lg:pr-5">
+            <div class="">
+              <div
+                class="border border-gray-300 pb-5 pt-3 rounded-md mb-5 relative px-5"
+              >
+                <span
+                  class="bg-gray-800 text-white px-5 pt-1 text-xs font-nato pb-0.5 rounded-full tracking-wide -top-[11.5px] left-5 absolute"
+                >
+                  ২০০০০ টাকার
+                </span>
+
+                <h1 class="text-4xl text-green-600 tracking-wide pt-4 pb-3">
+                  সংসারের হিসাব-নিকাশ
+                </h1>
+                <div class="flex items-end justify-between">
+                  <div>
+                    <h2>
+                      বর্তমান ব্যালেন্স :
+                      <span id="showBudget" class="font-bold text-green-600">20000</span>
+                    </h2>
+                    <h2>
+                      খরচ করা হয়েছে :
+                      <span id="expenseAmount" class="font-bold text-red-600">20000</span>
+                    </h2>
+                  </div>
+                  <button
+                    id="removeData"
+                    class="px-5 pt-1 pb-0.5 rounded-md border border-gray-300 text-red-600"
+                  >
+                    হিসাব মুছে ফেলুন
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <ul
+                  id="data-list"
+                  class="grid lg:grid-cols-2 list-inside text-gray-500 gap-x-10 gap-y-2"
+                ></ul>
+              </div>
+            </div>
           </div>
-          <div class="w-full text-lg border px-5 py-5">
-            <h2 class="font-bold leading-5 mb-5">বাজারের খরচ যোগ করুন</h2>
-            <form action="" class="space-y-3">
-              <input
-                type="text"
-                name="budget"
-                id="budget"
-                placeholder="আইটেম নাম"
-                class="input"
-              />
-              <input
-                type="text"
-                name="budget"
-                id="budget"
-                placeholder="পরিমাণ (গ্রাম/লিটার)"
-                class="input"
-              />
-              <input
-                type="text"
-                name="budget"
-                id="budget"
-                placeholder="মোট খরচ (টাকা)"
-                class="input"
-              />
-              <button class="btn">Add item</button>
-            </form>
+          <div class="w-full">
+            <div class="border border-gray-300 rounded-md px-5 py-5 mb-5">
+              <h2 class="font-bold text-lg leading-5 mb-5">
+                আজকের খরচ যোগ করুন
+              </h2>
+              <form action="" class="space-y-3" id="expenseItemForm">
+                <input
+                  type="text"
+                  id="expenseItemName"
+                  placeholder="পণ্যের  নাম"
+                  class="input"
+                />
+
+                <input
+                  type="number"
+                  id="expenseItemPrice"
+                  placeholder="পণ্যের দাম (টাকা)"
+                  class="input"
+                />
+                <button class="btn">যোগ করুন</button>
+              </form>
+            </div>
+            <hr class="border-gray-300 hidden lg:block" />
+            <div class="border border-gray-300 rounded-md px-5 py-5 mt-5">
+              <h2 class="font-bold text-lg text-gray-600 leading-5 mb-5">
+                নতুন পণ্য যোগ করুন
+              </h2>
+              <form class="space-y-3" id="addNewItemForm">
+                <input
+                  type="text"
+                  class="input"
+                  id="newItemName"
+                  placeholder="পণ্যের নাম"
+                  required
+                />
+                <input
+                  required
+                  type="number"
+                  class="input"
+                  id="newItemQuantity"
+                  placeholder="পরিমাণ (গ্রাম/লিটার)"
+                />
+
+                <button class="btn" type="submit">যোগ করুন</button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
     </main>
-    <!-- <script src="bajarTracker.js"></script> -->
+    <script src="bajarTracker.js"></script>
   </body>
 </html>

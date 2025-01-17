@@ -7,6 +7,9 @@
     @apply w-full h-10 px-3 border border-gray-300 rounded-md text-sm;
   }
   .btn {
-    @apply text-white w-full bg-green-600 text-sm h-10 border rounded-md;
+    @apply text-white w-full bg-gray-800 text-sm h-10 border rounded-md;
+  }
+  .bullet {
+    @apply bg-white border border-gray-300 shadow inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold;
   }
 }
