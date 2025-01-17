@@ -1,5 +1,6 @@
 const dataList = document.getElementById("data-list");
 const showBudget = document.getElementById("showBudget");
+const showExpense = document.getElementById("showExpense");
 
 const newItemForm = document.getElementById("addNewItemForm");
 const newItemName = document.getElementById("newItemName");
@@ -44,7 +45,7 @@ const BazarItems = [
   { name: "কালোজিরা", quantity: 50 },
   { name: "পাঁচফোড়ন", quantity: 50 },
   { name: "টিস্যু", quantity: 100 },
-  { name: "ভীম", quantity: 80 },
+  { name: "ভীম সাবান", quantity: 80 },
   { name: "কিসমিস", quantity: 200 },
   { name: "চানাচুর", quantity: 300 },
   { name: "বিস্কুট", quantity: 150 },
@@ -60,9 +61,13 @@ if (!localStorage.getItem("items")) {
 }
 
 let totalBudget = 20000;
+let totalExpense = 0;
+
 function displayBudget() {
   showBudget.innerText = totalBudget;
+  showExpense.innerText = totalExpense;
   localStorage.setItem("budget", totalBudget);
+  localStorage.setItem("expense", totalExpense);
 }
 
 expenseForm.addEventListener("submit", (e) => {
@@ -95,6 +100,7 @@ function addNewItem(name, quantity) {
 
 function updateExpense(name, expenseAmount) {
   const storedBudget = JSON.parse(localStorage.getItem("budget"));
+  const storedExpense = JSON.parse(localStorage.getItem("expense"));
   const storedData = JSON.parse(localStorage.getItem("items"));
   if (storedData) {
     const itemIndex = storedData.findIndex((item) => item.name == name);
@@ -113,8 +119,11 @@ function updateExpense(name, expenseAmount) {
     if (isTrue) {
       storedData[itemIndex].quantity -= expenseAmount;
       totalBudget -= expenseAmount;
-      localStorage.setItem("budget", JSON.stringify(storedBudget));
+      totalExpense += expenseAmount;
+
       localStorage.setItem("items", JSON.stringify(storedData));
+      localStorage.setItem("budget", JSON.stringify(storedBudget));
+      localStorage.setItem("expense", JSON.stringify(storedExpense));
 
       sortItemPrice();
       displayBudget();
@@ -160,6 +169,7 @@ document.getElementById("removeData").addEventListener("click", function (e) {
 // Initialize budget and items on page load
 document.addEventListener("DOMContentLoaded", () => {
   totalBudget = parseInt(localStorage.getItem("budget")) || 20000;
+  totalExpense = parseInt(localStorage.getItem("expense")) || 0;
   sortItemPrice();
   displayBudget();
 });
