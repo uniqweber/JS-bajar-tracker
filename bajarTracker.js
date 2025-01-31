@@ -54,19 +54,14 @@ const BazarItems = [
   { name: "ভুট্টা", quantity: 50 },
   { name: "শসা", quantity: 150 },
   { name: "গাজর", quantity: 150 },
-  { name: "ছোলা বুট ", quantity: 150 },
-  { name: "নুডলস ", quantity: 150 },
-  { name: "লেবু ", quantity: 100 },
-  { name: "শ্যাম্পু ", quantity: 130 },
-  { name: "চিরা ", quantity: 100 },
-  { name: "সেমাই ", quantity: 100 },
+  { name: "ছোলা বুট", quantity: 150 },
+  { name: "নুডলস", quantity: 150 },
+  { name: "লেবু", quantity: 100 },
+  { name: "শ্যাম্পু", quantity: 130 },
+  { name: "চিরা", quantity: 100 },
+  { name: "সেমাই", quantity: 100 },
 ];
 
-const total = BazarItems.reduce((acc, item) => {
-  return acc + item.quantity;
-}, 0);
-
-console.log(total);
 
 if (!localStorage.getItem("items")) {
   localStorage.setItem("items", JSON.stringify(BazarItems));
